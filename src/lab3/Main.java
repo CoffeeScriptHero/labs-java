@@ -10,11 +10,9 @@ public class Main {
     public static void main(String[] args) {
         int C3 = 1309 % 3; // 1  StringBuffer
         int C17 = 1309 % 17; //  0 Знайти найбільшу кількість речень заданого тексту, в яких є однакові слова.
-        System.out.println(C3);
-        System.out.println(C17);
 
         try {
-            StringBuffer text = new StringBuffer("Лаба 3. Тут мій текст ,речення. Інше речення, речення з повторюваними словами! Ще одне речення.");
+            StringBuffer text = new StringBuffer("Hello world. World is beautiful");
             int maxSentencesNumber = getSentencesWithMostDuplicates(text);
             System.out.println("Max number of sentences with similar words: " + maxSentencesNumber);
         } catch (Exception e) {
@@ -34,7 +32,7 @@ public class Main {
             String sentence = sentences[i].replaceAll("[,\\-]", " ");
             String[] words = sentence.trim().split("\\s+");
             for (String word : words) {
-                wordFrequency.computeIfAbsent(word, k -> new HashSet<>()).add(i);
+                wordFrequency.computeIfAbsent(word.toLowerCase(), k -> new HashSet<>()).add(i);
             }
         }
 
