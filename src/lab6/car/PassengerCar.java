@@ -49,6 +49,35 @@ public abstract class PassengerCar {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PassengerCar that = (PassengerCar) o;
+
+        if (price != that.price) return false;
+        if (Double.compare(that.fuelConsumption, fuelConsumption) != 0) return false;
+        if (maxSpeed != that.maxSpeed) return false;
+        if (isBroken != that.isBroken) return false;
+        if (!brand.equals(that.brand)) return false;
+        return model.equals(that.model);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = brand.hashCode();
+        result = 31 * result + model.hashCode();
+        result = 31 * result + price;
+        temp = Double.doubleToLongBits(fuelConsumption);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + maxSpeed;
+        result = 31 * result + (isBroken ? 1 : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return String.format(
             "\t- Car{Brand: %s, model: %s, price: %s, fuelConsumption: %.2f, maxSpeed: %d, isBroken: %b}\n",
