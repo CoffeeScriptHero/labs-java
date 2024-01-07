@@ -1,6 +1,5 @@
 package lab2;
 
-import java.util.Arrays;
 
 public class Main {
 
@@ -36,7 +35,7 @@ public class Main {
         for (int i = 0; i < matrix1.length; ++i) {
             for (int j = 0; j < matrix2[0].length; ++j) {
                 for (int k = 0; k < matrix1[0].length; ++k) {
-                    result[i][j] = matrix1[i][k] * matrix2[k][j];
+                    result[i][j] += matrix1[i][k] * matrix2[k][j];
                 }
             }
         }
@@ -53,7 +52,7 @@ public class Main {
 
         for (int col = 0; col < matrix[0].length; ++col) {
             double min = matrix[0][col];
-            for (int row = 0; row < matrix.length; ++row) {
+            for (int row = 1; row < matrix.length; ++row) {
                 if (matrix[row][col] < min) {
                     min = matrix[row][col];
                 }

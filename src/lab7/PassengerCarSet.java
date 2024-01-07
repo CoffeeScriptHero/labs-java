@@ -109,12 +109,12 @@ public class PassengerCarSet implements Set<PassengerCar> {
 
     @Override
     public boolean add(PassengerCar passengerCar) {
-        Node node = new Node(passengerCar);
-
         //не додаємо елемент до списку, якщо це дублікат, та повертаємо false
         if (contains(passengerCar)) {
             return false;
         }
+
+        Node node = new Node(passengerCar);
 
         if (head == null) {
             head = node;
